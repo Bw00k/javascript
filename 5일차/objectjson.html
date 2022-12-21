@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>jsom</h3>
+    <div id="result">
+        <div><span>kim</span><span>20</span></div>
+    </div>
+    <script>
+        let person = {name:'kim',age:'20'}
+
+        let persons = [
+        {name:'kim',age:'20'},
+        {name:'park',age:'10'}
+        ]
+
+        for(let i=0; i<person.length; i++){
+            let newNode = `<div><span>${person[i].name}kim</span><span>${persons[i].age}20</span></div>`;
+            result.innerHTML += newNode;
+        }
+    </script>
+</body>
+</html>
