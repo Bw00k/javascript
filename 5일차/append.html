@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apend</title>
+    <style>
+        div { margin:5px; padding: 10px; border: 1px solid red;}
+    </style>
+</head>
+<body>
+
+    <div id="apple">사과</div>
+    <div id="banana">바나나</div>
+    <div id="kiwi">키위</div>
+    <div id="basket">    </div>
+    
+    <script>
+        apple.onclick = function(){
+            '<div class="fruit" title="사과" id="apple">사과</div>' //createElement,innerText, append
+            let div = document.createElement("div");
+            div.classname ='apple'
+            div.classList.add("fruit")
+            div.title = "사과"
+            div.id ="apple"
+            let span =document.createElement("span");
+            span.innerText="사과"
+            div.append(span);
+            div.onclick = function(){
+                this.remove();
+                event.target.remove();
+            }
+            
+            //className, classList, setAttribute
+            basket.append(div);
+        }
+        banana.onclick = function(){
+            '<div>바나나</div>' //createElement,innerText, append
+            let div = document.createElement("div");
+           //div.innerHTML="<span>'바나나'</span>"
+           //span 태그 생성
+           let span =document.createElement("span");
+
+           //span 태그 내용
+           span.innerText="바나나"
+
+           //span 태그를 div에 추가
+           div.append(span);
+
+            div.onclick = function(){
+            this.remove();
+            }
+            basket.append(div);
+        }
+        kiwi.onclick = function(){
+            '<div>키위</div>' //createElement,innerText, append
+            let div = document.createElement("div");
+            div.onclick = function(){
+                this.remove();
+                event.target.remove();
+                let span =document.createElement("span");
+                span.innerText="키위"
+                div.append(span);
+            }
+            basket.append(div);
+        }
+    </script>
+</body>
+</html>

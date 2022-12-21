@@ -21,9 +21,9 @@
             let option = ev.target;  //이벤트가 발생한 태그
             console.log(option.innerText) //태그의 내용
             //태그생성해서 select#right 태그에append
-            let aaa=document.createElement("option");
+            let opt1=document.createElement("option");
             aaa.innerHTML=option.innerText
-            right.appendChild(aaa)
+            right.appendChild(opt1)
 
             //ev.target.remove()
             left.removeChild(option);
