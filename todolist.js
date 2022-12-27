@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
   const myUrl = new URL("http://127.0.0.1:3000" + req.url);
   if (myUrl.pathname == "/todolist") {
     res.end(JSON.stringify(todoList));
-  } else if (myUrl.pathname == "/no=1") {
+  } else if (myUrl.searchParams == "no") {
     let html = ``;
   }
 });

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>comment관리</h3>
+
+    <div id="commentslist"></div>
+    <form>
+      <button onclick="selectComments()">조회</button>
+      <input id="id" placeholder="id" />
+      <input id="body" placeholder="body" />
+      <button id="btnAdd" type="button">코맨트등록</button>
+      <button id="cngbtn" type="button">수정</button>
+    </form>
+    <script>
+      selectComments();
+      btnAdd.addEventListener("click", insertComments);
+      commentslist.addEventListener("click", deleteComments);
+      cngbtn.addEventListener("click", cngcCommnets);
+
+      function cngcCommnets() {
+        let url = "http://localhost:3000/comments/" + id.value;
+        selectComments();
+        let data = { id: id.value, body: body.value };
+        fetch(url, {
+          method: "put",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((res) => selectComments());
+      }
+
+      function deleteComments(ev) {
+        let id = ev.target.getAttribute("data-id");
+        let url = "http://localhost:3000/comments/" + id;
+        let xhr = new XMLHttpRequest();
+        fetch(url, {
+          method: "delete",
+        })
+          .then((res) => res.json())
+          .then((res) => selectComments());
+      }
+
+      function insertComments() {
+        let url = "http://localhost:3000/comments";
+        selectComments();
+        let data = { id: id.value, body: body.value };
+        fetch(url, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((res) => selectComments());
+      }
+
+      function selectComments() {
+        let url = "http://localhost:3000/comments";
+        fetch(url)
+          .then((res) => {
+            return res.json();
+          })
+          .then((comments) => {
+            commentslist.innerHTML = "";
+            for (let i = 0; i < comments.length; i++) {
+              commentslist.innerHTML += `<div>${comments[i].id} ${comments[i].body}
+                            <button data-id="${comments[i].id}">삭제</button></div>`;
+            }
+          });
+      }
+      console.log("요청시작");
+    </script>
+  </body>
+</html>
