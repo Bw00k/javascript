@@ -52,7 +52,6 @@ document.querySelector("#list").addEventListener("click", function (ev) {
       }
     }
     console.table(goods);
-    btn.closest(".card").remove();
   }
 });
 
